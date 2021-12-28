@@ -1,0 +1,206 @@
+import 'package:tibetan_prayer/data/data_source.dart';
+
+class Prayer {
+  int id;
+  String serialNo;
+  String title;
+  String content;
+  int count;
+  String downloadUrl;
+  Prayer(
+      {required this.id,
+      required this.serialNo,
+      required this.title,
+      required this.content,
+      required this.count,
+      required this.downloadUrl});
+
+  static List<Prayer> getPrayer() {
+    return [
+      Prayer(
+        id: 1,
+        serialNo: DataSourceNumber.one,
+        title: DataSourceTitle.GOM_GYAB_DOT_TANG_TITLE,
+        content: DataSourceContent.GOM_GYAB_DOT_TANG_CONTENT,
+        count: 0,
+        downloadUrl: DataSourceDownloadUrl.GOM_GYAB_DOT_TANG_DONWLOAD_URL,
+      ),
+      Prayer(
+        id: 2,
+        serialNo: DataSourceNumber.two,
+        title: DataSourceTitle.KULONG_JAY_TANG_TITLE,
+        content: DataSourceContent.KULONG_JAY_TANG_CONTENT,
+        count: 0,
+        downloadUrl: DataSourceDownloadUrl.KULONG_JAY_TANG_DONWLOAD_URL,
+      ),
+      Prayer(
+        id: 3,
+        serialNo: DataSourceNumber.three,
+        title: DataSourceTitle.GYUN_CHAK_SUM_TITLE,
+        content: DataSourceContent.GYUN_CHAK_SUM_CONTENT,
+        count: 0,
+        downloadUrl: DataSourceDownloadUrl.GYUN_CHAK_SUM_DONWLOAD_URL,
+      ),
+      Prayer(
+        id: 4,
+        serialNo: DataSourceNumber.four,
+        title: DataSourceTitle.KYAB_DO_SAM_KAY_TITLE,
+        content: DataSourceContent.KYAB_DO_SAM_KAY_CONTENT,
+        count: 0,
+        downloadUrl: DataSourceDownloadUrl.KYAB_DO_SAM_KAY_DONWLOAD_URL,
+      ),
+      Prayer(
+        id: 5,
+        serialNo: DataSourceNumber.five,
+        title: DataSourceTitle.YANLAK_DUNPA_TITLE,
+        content: DataSourceContent.YANLAK_DUNPA_CONTENT,
+        count: 0,
+        downloadUrl: DataSourceDownloadUrl.YANLAK_DUNPA_DONWLOAD_URL,
+      ),
+      Prayer(
+        id: 6,
+        serialNo: DataSourceNumber.six,
+        title: DataSourceTitle.KAP_SUMPA_TITLE,
+        content: DataSourceContent.KAP_SUMPA_CONTENT,
+        count: 0,
+        downloadUrl: DataSourceDownloadUrl.KAP_SUMPA_DONWLOAD_URL,
+      ),
+      Prayer(
+        id: 7,
+        serialNo: DataSourceNumber.seven,
+        title: DataSourceTitle.KHA_NYAM_MA_TITLE,
+        content: DataSourceContent.KHA_NYAM_MA_CONTENT,
+        count: 0,
+        downloadUrl: DataSourceDownloadUrl.KHA_NYAM_MA_DONWLOAD_URL,
+      ),
+      Prayer(
+        id: 8,
+        serialNo: DataSourceNumber.eight,
+        title: DataSourceTitle.TSA_SUM_KUN_DU_TITLE,
+        content: DataSourceContent.TSA_SUM_KUN_DU_CONTENT,
+        count: 0,
+        downloadUrl: DataSourceDownloadUrl.TSA_SUM_KUN_DU_DONWLOAD_URL,
+      ),
+      Prayer(
+        id: 9,
+        serialNo: DataSourceNumber.nine,
+        title: DataSourceTitle.GYALWAY_JABTEN_TITLE,
+        content: DataSourceContent.GYALWAY_JABTEN_CONTENT,
+        count: 0,
+        downloadUrl: DataSourceDownloadUrl.GYALWAY_JABTEN_DONWLOAD_URL,
+      ),
+      Prayer(
+        id: 10,
+        serialNo: DataSourceNumber.ten,
+        title: DataSourceTitle.GANGLO_MA_TITLE,
+        content: DataSourceContent.GANGLO_MA_CONTENT,
+        count: 0,
+        downloadUrl: DataSourceDownloadUrl.GANGLO_MA_DONWLOAD_URL,
+      ),
+      Prayer(
+        id: 11,
+        serialNo: DataSourceNumber.eleven,
+        title: DataSourceTitle.NGOWA_MONLAM_ONE_TITLE,
+        content: DataSourceContent.NGOWA_MONLAM_ONE_CONTENT,
+        count: 0,
+        downloadUrl: DataSourceDownloadUrl.NGOWA_MONLAM_ONE_DONWLOAD_URL,
+      ),
+      Prayer(
+        id: 12,
+        serialNo: DataSourceNumber.twelve,
+        title: DataSourceTitle.DOLMA_TITLE,
+        content: DataSourceContent.DOLMA_CONTENT,
+        count: 0,
+        downloadUrl: DataSourceDownloadUrl.DOLMA_DONWLOAD_URL,
+      ),
+      Prayer(
+        id: 13,
+        serialNo: DataSourceNumber.thirteen,
+        title: DataSourceTitle.SHERAB_NYINGPO_TITLE,
+        content: DataSourceContent.SHERAB_NYINGPO_CONTENT,
+        count: 0,
+        downloadUrl: DataSourceDownloadUrl.SHERAB_NYINGPO_DONWLOAD_URL,
+      ),
+      Prayer(
+        id: 14,
+        serialNo: DataSourceNumber.fourteen,
+        title: DataSourceTitle.LHAMO_YANLAK_TITLE,
+        content: DataSourceContent.LHAMO_YANLAK_CONTENT,
+        count: 0,
+        downloadUrl: DataSourceDownloadUrl.LHAMO_YANLAK_DONWLOAD_URL,
+      ),
+      Prayer(
+        id: 15,
+        serialNo: DataSourceNumber.fifteen,
+        title: DataSourceTitle.NAYCHUNG_THINLAY_TITLE,
+        content: DataSourceContent.NAYCHUNG_THINLAY_CONTENT,
+        count: 0,
+        downloadUrl: DataSourceDownloadUrl.NAYCHUNG_THINLAY_DONWLOAD_URL,
+      ),
+      Prayer(
+        id: 16,
+        serialNo: DataSourceNumber.sixteen,
+        title: DataSourceTitle.BOD_CHOT_YAYUNG_TITLE,
+        content: DataSourceContent.BOD_CHOT_YAYUNG_CONTENT,
+        count: 0,
+        downloadUrl: DataSourceDownloadUrl.BOD_CHOT_YAYUNG_DONWLOAD_URL,
+      ),
+      Prayer(
+        id: 17,
+        serialNo: DataSourceNumber.seventeen,
+        title: DataSourceTitle.THUPTEN_RINMAT_TITLE,
+        content: DataSourceContent.THUPTEN_RINMAT_CONTENT,
+        count: 0,
+        downloadUrl: DataSourceDownloadUrl.THUPTEN_RINMAT_DONWLOAD_URL,
+      ),
+      Prayer(
+        id: 18,
+        serialNo: DataSourceNumber.eighteen,
+        title: DataSourceTitle.DHENTSIG_MONLAM_TITLE,
+        content: DataSourceContent.DHENTSIG_MONLAM_CONTENT,
+        count: 0,
+        downloadUrl: DataSourceDownloadUrl.DHENTSIG_MONLAM_DONWLOAD_URL,
+      ),
+      Prayer(
+        id: 19,
+        serialNo: DataSourceNumber.nineteen,
+        title: DataSourceTitle.NGOWA_MONLAM_TWO_TITLE,
+        content: DataSourceContent.NGOWA_MONLAM_TWO_CONTENT,
+        count: 0,
+        downloadUrl: DataSourceDownloadUrl.NGOWA_MONLAM_TWO_DONWLOAD_URL,
+      ),
+      Prayer(
+        id: 20,
+        serialNo: DataSourceNumber.twenty,
+        title: DataSourceTitle.PHAKTOT_TITLE,
+        content: DataSourceContent.PHAKTOT_CONTENT,
+        count: 0,
+        downloadUrl: DataSourceDownloadUrl.PHAKTOT_DONWLOAD_URL,
+      ),
+      Prayer(
+        id: 21,
+        serialNo: DataSourceNumber.twentyone,
+        title: DataSourceTitle.KYABDO_TITLE,
+        content: DataSourceContent.KYABDO_CONTENT,
+        count: 0,
+        downloadUrl: DataSourceDownloadUrl.KYABDO_DONWLOAD_URL,
+      ),
+      Prayer(
+        id: 22,
+        serialNo: DataSourceNumber.twentytwo,
+        title: DataSourceTitle.BARCHAT_LAMSEL_TITLE,
+        content: DataSourceContent.BARCHAT_LAMSEL_CONTENT,
+        count: 0,
+        downloadUrl: DataSourceDownloadUrl.BARCHAT_LAMSEL_DONWLOAD_URL,
+      ),
+      Prayer(
+        id: 23,
+        serialNo: DataSourceNumber.twentythree,
+        title: DataSourceTitle.SAMPA_LUNDUP_TITLE,
+        content: DataSourceContent.SAMPA_LUNDUP_CONTENT,
+        count: 0,
+        downloadUrl: DataSourceDownloadUrl.SAMPA_LUNDUP_DONWLOAD_URL,
+      ),
+    ];
+  }
+}
