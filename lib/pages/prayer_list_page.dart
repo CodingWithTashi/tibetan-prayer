@@ -7,7 +7,9 @@ import 'package:tibetan_prayer/widget/prayer_border.dart';
 
 class PrayerListPage extends StatefulWidget {
   final Function(Prayer prayer)? onClick;
-  const PrayerListPage({Key? key, this.onClick}) : super(key: key);
+  final GlobalKey<ScaffoldState> scaffoldKey;
+  const PrayerListPage({Key? key, required this.scaffoldKey, this.onClick})
+      : super(key: key);
 
   @override
   _PrayerListPageState createState() => _PrayerListPageState();
@@ -24,30 +26,47 @@ class _PrayerListPageState extends State<PrayerListPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
+      /*
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,*/
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
       padding: const EdgeInsets.symmetric(vertical: 5),
-      decoration: const ShapeDecoration(
-          shape: PrayerBorder(radius: 8), color: Colors.white),
-      child: ListView.builder(
-        physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.symmetric(vertical: 5),
-        itemCount: prayerList.length,
-        itemBuilder: (context, index) {
-          Prayer prayer = prayerList[index];
-          if (index == 0) {
-            return Column(
-              children: [_dalailamaPhotos(), _getSingleTile(prayer)],
-            );
-          }
-          return _getSingleTile(prayer);
-        },
+      decoration:
+          BoxDecoration(border: Border.all(color: Colors.white, width: 2)),
+      //ShapeDecoration(shape: PrayerBorder(radius: 8), color: Colors.white),
+      child: Stack(
+        alignment: Alignment.topLeft,
+        children: [
+          ListView.builder(
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.symmetric(vertical: 5),
+            itemCount: prayerList.length,
+            itemBuilder: (context, index) {
+              Prayer prayer = prayerList[index];
+              if (index == 0) {
+                return Column(
+                  children: [_dalailamaPhotos(), _getSingleTile(prayer)],
+                );
+              }
+              return _getSingleTile(prayer);
+            },
+          ),
+          IconButton(
+            onPressed: () {
+              print('pressed');
+              widget.scaffoldKey.currentState!.openDrawer();
+            },
+            icon: Icon(
+              Icons.menu,
+              color: Colors.white,
+            ),
+          ),
+        ],
       ),
     );
   }
 
-  Widget _getSingleTile(Prayer prayer) => InkWell(
+  Widget _getSingleTile(Prayer prayer) => InkResponse(
         onTap: () {
           if (widget.onClick != null) {
             widget.onClick!(prayer);

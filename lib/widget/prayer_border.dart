@@ -22,7 +22,10 @@ class PrayerBorder extends ShapeBorder {
   }
 
   @override
-  void paint(Canvas canvas, Rect rect, {TextDirection? textDirection}) {}
+  void paint(Canvas canvas, Rect rect, {TextDirection? textDirection}) {
+    print('error from paint');
+    _createPath(rect);
+  }
 
   @override
   ShapeBorder scale(double t) => PrayerBorder(radius: radius);

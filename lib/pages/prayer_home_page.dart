@@ -3,6 +3,7 @@ import 'package:tibetan_prayer/model/prayer.dart';
 import 'package:tibetan_prayer/pages/prayer_detail_page.dart';
 import 'package:tibetan_prayer/pages/prayer_list_page.dart';
 import 'package:tibetan_prayer/util/screen_util.dart';
+import 'package:tibetan_prayer/widget/side_drawer.dart';
 
 class PrayerHomePage extends StatefulWidget {
   const PrayerHomePage({Key? key}) : super(key: key);
@@ -14,36 +15,49 @@ class PrayerHomePage extends StatefulWidget {
 class _PrayerHomePageState extends State<PrayerHomePage> {
   Prayer? selectedPrayer;
   DateTime? currentBackPressTime;
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
       backgroundColor: Theme.of(context).primaryColor,
+      drawer: Container(
+          constraints: const BoxConstraints(maxWidth: 300),
+          child: const SideDrawer()),
       body: WillPopScope(
-        child: ResponsiveWidget(
-          smallScreen: const SafeArea(child: PrayerListPage()),
-          mediumOrLargeScreen: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.white, width: 2),
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 3,
-                  child: PrayerListPage(
-                    onClick: (prayer) {
-                      selectedPrayer = prayer;
-                      setState(() {});
-                    },
+        child: Container(
+          constraints: BoxConstraints(minWidth: 300),
+          child: ResponsiveWidget(
+            smallScreen: SafeArea(
+                child: PrayerListPage(
+              scaffoldKey: scaffoldKey,
+            )),
+            mediumOrLargeScreen: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.white, width: 2),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: PrayerListPage(
+                      scaffoldKey: scaffoldKey,
+                      onClick: (prayer) {
+                        selectedPrayer = prayer;
+                        setState(() {});
+                      },
+                    ),
                   ),
-                ),
-                Expanded(
-                  flex: 6,
-                  child: PrayerDetailPage(
-                    selectedPrayer: selectedPrayer,
-                  ),
-                )
-              ],
+                  Expanded(
+                    flex: 6,
+                    child: PrayerDetailPage(
+                      selectedPrayer: selectedPrayer,
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),

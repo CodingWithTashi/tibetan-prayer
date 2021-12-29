@@ -17,12 +17,18 @@ class _PrayerDetailPageState extends State<PrayerDetailPage> {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
-      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-      decoration: const ShapeDecoration(
-          shape: PrayerBorder(radius: 10), color: Colors.white),
+      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+      decoration:
+          BoxDecoration(border: Border.all(color: Colors.white, width: 2)),
+
+      /*const ShapeDecoration(
+          shape: PrayerBorder(radius: 10), color: Colors.white),*/
       child: widget.selectedPrayer == null
           ? const Center(
-              child: Text('No Prayer Selected'),
+              child: Text(
+                'ཁ་བཏོན་འདེམ།',
+                style: TextStyle(fontSize: 28, color: Colors.grey),
+              ),
             )
           : SingleChildScrollView(
               physics: BouncingScrollPhysics(),
