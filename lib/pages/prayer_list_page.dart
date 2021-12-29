@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:tibetan_prayer/model/prayer.dart';
 import 'package:tibetan_prayer/pages/prayer_detail_page.dart';
 import 'package:tibetan_prayer/util/application_util.dart';
-import 'package:tibetan_prayer/widget/prayer_border.dart';
 
 class PrayerListPage extends StatefulWidget {
   final Function(Prayer prayer)? onClick;
@@ -53,10 +52,9 @@ class _PrayerListPageState extends State<PrayerListPage> {
           ),
           IconButton(
             onPressed: () {
-              print('pressed');
               widget.scaffoldKey.currentState!.openDrawer();
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.menu,
               color: Colors.white,
             ),
@@ -101,11 +99,14 @@ class _PrayerListPageState extends State<PrayerListPage> {
                 ),
                 Expanded(
                   child: Hero(
-                    flightShuttleBuilder: flightShuttleBuilder,
                     tag: prayer.id,
-                    child: Text(
-                      prayer.title,
-                      style: const TextStyle(color: Colors.white, fontSize: 26),
+                    child: Material(
+                      type: MaterialType.transparency,
+                      child: Text(
+                        prayer.title,
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 26),
+                      ),
                     ),
                   ),
                 ),

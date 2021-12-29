@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tibetan_prayer/model/prayer.dart';
-import 'package:tibetan_prayer/util/application_util.dart';
-import 'package:tibetan_prayer/widget/prayer_border.dart';
 
 class PrayerDetailPage extends StatefulWidget {
   final Prayer? selectedPrayer;
@@ -31,7 +29,7 @@ class _PrayerDetailPageState extends State<PrayerDetailPage> {
               ),
             )
           : SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               primary: false,
               child: Container(
                 padding:
@@ -41,15 +39,17 @@ class _PrayerDetailPageState extends State<PrayerDetailPage> {
                     children: [
                       Hero(
                         tag: widget.selectedPrayer!.id,
-                        flightShuttleBuilder: flightShuttleBuilder,
-                        child: Text(
-                          widget.selectedPrayer!.title,
-                          style: TextStyle(fontSize: 32, height: 1.5),
+                        child: Material(
+                          type: MaterialType.transparency,
+                          child: Text(
+                            widget.selectedPrayer!.title,
+                            style: const TextStyle(fontSize: 32, height: 1.5),
+                          ),
                         ),
                       ),
                       Text(
                         widget.selectedPrayer!.content,
-                        style: TextStyle(fontSize: 26, height: 1.5),
+                        style: const TextStyle(fontSize: 26, height: 1.5),
                       ),
                     ],
                   ),

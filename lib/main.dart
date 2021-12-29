@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           displayColor: Colors.white,
         ),
       ),
-      home: PrayerHomePage(),
+      home: const PrayerHomePage(),
     );
   }
 }
