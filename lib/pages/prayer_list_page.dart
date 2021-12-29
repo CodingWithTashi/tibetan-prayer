@@ -26,12 +26,13 @@ class _PrayerListPageState extends State<PrayerListPage> {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
-      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+      padding: const EdgeInsets.symmetric(vertical: 5),
       decoration: const ShapeDecoration(
-          shape: PrayerBorder(radius: 32), color: Colors.white),
+          shape: PrayerBorder(radius: 8), color: Colors.white),
       child: ListView.builder(
         physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.symmetric(vertical: 10),
+        padding: const EdgeInsets.symmetric(vertical: 5),
         itemCount: prayerList.length,
         itemBuilder: (context, index) {
           Prayer prayer = prayerList[index];
@@ -57,8 +58,10 @@ class _PrayerListPageState extends State<PrayerListPage> {
                 builder: (context) {
                   return Scaffold(
                     backgroundColor: Theme.of(context).primaryColor,
-                    body: PrayerDetailPage(
-                      selectedPrayer: prayer,
+                    body: SafeArea(
+                      child: PrayerDetailPage(
+                        selectedPrayer: prayer,
+                      ),
                     ),
                   );
                 },
@@ -78,9 +81,13 @@ class _PrayerListPageState extends State<PrayerListPage> {
                   style: const TextStyle(color: Colors.white, fontSize: 26),
                 ),
                 Expanded(
-                  child: Text(
-                    prayer.title,
-                    style: const TextStyle(color: Colors.white, fontSize: 26),
+                  child: Hero(
+                    flightShuttleBuilder: flightShuttleBuilder,
+                    tag: prayer.id,
+                    child: Text(
+                      prayer.title,
+                      style: const TextStyle(color: Colors.white, fontSize: 26),
+                    ),
                   ),
                 ),
               ],
@@ -102,7 +109,7 @@ class _PrayerListPageState extends State<PrayerListPage> {
           ),
           const Text(
             'Dedicated to ~His Holiness',
-            style: TextStyle(fontSize: 18),
+            style: TextStyle(fontSize: 16),
           ),
         ],
       );

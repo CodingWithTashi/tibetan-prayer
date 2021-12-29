@@ -13,38 +13,54 @@ class PrayerHomePage extends StatefulWidget {
 
 class _PrayerHomePageState extends State<PrayerHomePage> {
   Prayer? selectedPrayer;
+  DateTime? currentBackPressTime;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.white, width: 2),
-        ),
+      body: WillPopScope(
         child: ResponsiveWidget(
-          smallScreen: const PrayerListPage(),
-          mediumOrLargeScreen: Row(
-            children: [
-              Expanded(
-                flex: 3,
-                child: PrayerListPage(
-                  onClick: (prayer) {
-                    selectedPrayer = prayer;
-                    setState(() {});
-                  },
+          smallScreen: const SafeArea(child: PrayerListPage()),
+          mediumOrLargeScreen: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.white, width: 2),
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 3,
+                  child: PrayerListPage(
+                    onClick: (prayer) {
+                      selectedPrayer = prayer;
+                      setState(() {});
+                    },
+                  ),
                 ),
-              ),
-              Expanded(
-                flex: 6,
-                child: PrayerDetailPage(
-                  selectedPrayer: selectedPrayer,
-                ),
-              )
-            ],
+                Expanded(
+                  flex: 6,
+                  child: PrayerDetailPage(
+                    selectedPrayer: selectedPrayer,
+                  ),
+                )
+              ],
+            ),
           ),
         ),
+        onWillPop: onWillPop,
       ),
     );
+  }
+
+  Future<bool> onWillPop() {
+    DateTime now = DateTime.now();
+    if (currentBackPressTime == null ||
+        now.difference(currentBackPressTime!) > Duration(seconds: 2)) {
+      currentBackPressTime = now;
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Press back again to exit')));
+      return Future.value(false);
+    }
+    return Future.value(true);
   }
 }

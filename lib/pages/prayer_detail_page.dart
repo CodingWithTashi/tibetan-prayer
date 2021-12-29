@@ -19,20 +19,33 @@ class _PrayerDetailPageState extends State<PrayerDetailPage> {
       height: MediaQuery.of(context).size.height,
       margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       decoration: const ShapeDecoration(
-          shape: PrayerBorder(radius: 32), color: Colors.white),
+          shape: PrayerBorder(radius: 10), color: Colors.white),
       child: widget.selectedPrayer == null
           ? const Center(
               child: Text('No Prayer Selected'),
             )
           : SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
               primary: false,
               child: Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: Center(
-                  child: Text(
-                    widget.selectedPrayer!.content,
-                    style: TextStyle(fontSize: 26, height: 1.5),
+                  child: Column(
+                    children: [
+                      Hero(
+                        tag: widget.selectedPrayer!.id,
+                        flightShuttleBuilder: flightShuttleBuilder,
+                        child: Text(
+                          widget.selectedPrayer!.title,
+                          style: TextStyle(fontSize: 32, height: 1.5),
+                        ),
+                      ),
+                      Text(
+                        widget.selectedPrayer!.content,
+                        style: TextStyle(fontSize: 26, height: 1.5),
+                      ),
+                    ],
                   ),
                 ),
               ),
