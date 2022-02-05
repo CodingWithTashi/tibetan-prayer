@@ -3,6 +3,9 @@
 Tibetan Prayer Application
 
 ## Getting Started
+Responsive Tibeta Prayer Application
+# [Large Screen]
+<img src="https://github.com/CodingWithTashi/tibetan-prayer/blob/master/demo/tibetan%20prayer.png?raw=true" width="1000" height="500" />
 
 This project is a starting point for a Flutter application.
 
