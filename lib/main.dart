@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'jomolhari',
         primarySwatch: ApplicationUtil.createMaterialColor(
-          const Color(0xffff704c04),
+          const Color(0xff704c04),
         ),
         textTheme: const TextTheme(
           bodyText1: TextStyle(),
